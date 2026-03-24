@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "microsam-llrd"
+version = "0.1.0"
+description = "LoRA + LLRD training utilities for MicroSAM EM experiments"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Hanan Hussain" }
+]
+dependencies = [
+  "numpy",
+  "torch",
+  "torchvision",
+  "imageio",
+  "tifffile",
+  "scikit-image",
+  "matplotlib",
+  "natsort"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
