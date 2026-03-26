@@ -77,7 +77,7 @@ em_data/
 Example:
 
 ```bash
-python scripts/train_generalist.py   --input_path /path/to/em_data   --save_root /path/to/microsam_runs   --iterations 8500   --lora_rank 8   --lora_start_block 6   --lr 1e-4   --layer_decay 0.95   --lr_other_factor 0.1   --lr_unetr_factor 0.1   --augment_to_max_size   --n_objects 10
+python scripts/train_generalist.py   --input_path /path/to/em_data   --save_root /path/to/microsam_runs   --iterations 20000   --lora_rank 8   --lora_start_block 6   --lr 1e-4   --layer_decay 0.95   --lr_other_factor 0.1   --lr_unetr_factor 0.1   --augment_to_max_size   --n_objects 10
 ```
 
 ## Merge LoRA checkpoint
