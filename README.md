@@ -106,6 +106,5 @@ python scripts/evaluate_predictions.py   --dataset lucchi   --eval_root /path/to
 
 ## Notes
 
-- This repo preserves your notebook logic closely.
-- Colab-only setup commands, Drive mounting, TensorBoard launching, and manual file copies were intentionally not placed inside the library.
-- You can still keep the notebook in `notebooks/` as a runnable experiment log.
+- Colab notebook is provided for easy execution
+  
