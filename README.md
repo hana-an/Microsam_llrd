@@ -200,16 +200,34 @@ python scripts/merge_checkpoint.py   --best-pt /path/to/best.pt   --out-pt /path
 python scripts/export_eval_data.py   --input_path /path/to/em_data   --dataset kasthuri   --out_root /path/to/microsam_eval_data
 ```
 
+
+
 ## Run inference
 
 ```bash
 python scripts/run_instance_segmentation.py   --dataset lucchi   --eval_root /path/to/microsam_eval_data   --checkpoint /path/to/mergedbest.pt   --experiment_dir /path/to/microsam_eval_runs/lucchi_ais   --model_type vit_b_em_organelles
+```
+Example:
+```bash
+python scripts/run_instance_segmentation.py \
+  --dataset lucchi \
+  --eval_root /content/drive/MyDrive/microsam_llrd_generalist_Aug20k/Aug_20k/microsam_eval_data \
+  --checkpoint /content/drive/MyDrive/microsam_llrd_generalist_Aug20k/Aug_20k/microsam_runs/checkpoints/vit_b_em_organelles/repo_mergedbest.pt \
+  --experiment_dir /content/microsam_inference_clean/lucchi \
+  --model_type vit_b_em_organelles
 ```
 
 ## Evaluate predictions
 
 ```bash
 python scripts/evaluate_predictions.py   --dataset lucchi   --eval_root /path/to/microsam_eval_data   --experiment_dir /path/to/microsam_eval_runs/lucchi_ais
+```
+Example:
+```bash
+python scripts/evaluate_predictions.py \
+  --dataset lucchi \
+  --eval_root /content/drive/MyDrive/microsam_llrd_generalist_Aug20k/Aug_20k/microsam_eval_data \
+  --experiment_dir /content/microsam_inference_test/lucchi
 ```
 
 ## Notes
