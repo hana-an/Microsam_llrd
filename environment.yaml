@@ -1,0 +1,33 @@
+name: micro_sam3
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - vigra
+  - pooch
+  - python-xxhash
+  - python-elf
+  - xarray
+  - netcdf4
+  - natsort
+  - pip
+  - pip:
+      - torch
+      - torchvision
+      - torchaudio
+      - numpy
+      - scipy
+      - scikit-image
+      - matplotlib
+      - imageio
+      - tifffile
+      - tqdm
+      - nibabel
+      - tensorboard
+      - segment-anything
+      - kornia
+      - zarr==2.18.4
+      - numcodecs==0.12.1
+      - "napari[all]"
+      - git+https://github.com/computational-cell-analytics/micro-sam.git
+      - git+https://github.com/constantinpape/torch-em.git
