@@ -43,22 +43,98 @@ microsam-llrd/
 
 ## Installation
 
-Create your environment first, then install this repo in editable mode.
+### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/microsam-llrd.git
-cd microsam-llrd
+git clone https://github.com/hana-an/Microsam_llrd.git
+cd Microsam_llrd
+```
+
+---
+
+### Step 2: Setup Environment (Recommended)
+
+This project depends on `torch_em` and `micro_sam`, which require `python-elf` (`elf.io`).  
+A standard pip setup may fail for these dependencies.
+
+It is recommended to use micromamba / conda.
+
+#### Install micromamba
+
+```bash
+wget -qO micromamba.tar.bz2 https://micro.mamba.pm/api/micromamba/linux-64/latest
+tar -xjf micromamba.tar.bz2
+export MAMBA_ROOT_PREFIX=/content/micromamba
+eval "$(/content/bin/micromamba shell hook -s bash)"
+```
+
+#### Create environment
+
+```bash
+micromamba create -y -n microsam_llrd \
+  "python=3.12" \
+  "pytorch>=2.5" \
+  "torchvision" \
+  "torch_em>=0.8" \
+  "python-elf>=0.7.1" \
+  pip
+```
+
+#### Activate environment
+
+```bash
+micromamba activate microsam_llrd
+```
+
+---
+
+### Step 3: Install Dependencies
+
+```bash
+pip install timm tqdm xarray zarr==2.18.4 numcodecs==0.12.1 \
+natsort pooch imagecodecs xxhash nibabel scipy scikit-image \
+matplotlib imageio tifffile tensorboard netcdf4 segment-anything
+
+pip install git+https://github.com/computational-cell-analytics/micro-sam.git
+pip install git+https://github.com/ChaoningZhang/MobileSAM.git
+```
+
+---
+
+### Step 4: Install This Repository
+
+```bash
 pip install -e .
 ```
 
-You will also need a working install of:
+---
 
-- `torch`
-- `torch-em`
-- `micro_sam`
-- dataset IO dependencies used by your environment
+### Important
 
-Because `micro_sam` and `torch-em` setups differ across CUDA, Colab, Linux, and ARM systems, they are left as normal requirements rather than hard-pinned here.
+If you encounter:
+
+```bash
+ModuleNotFoundError: No module named 'elf'
+```
+
+Ensure that `python-elf` is installed via the conda/micromamba environment.
+
+---
+
+### Verification
+
+```bash
+python -c "import elf.io; print('elf.io OK')"
+python -c "import torch_em; print('torch_em OK')"
+
+python -c "import microsam_llrd; print('package OK')"
+python -c "import microsam_llrd.llrd; print('llrd OK')"
+python -c "import microsam_llrd.merge_lora; print('merge_lora OK')"
+python -c "import microsam_llrd.inference; print('inference OK')"
+
+python scripts/train_generalist.py --help
+```
+
 
 ## Dataset layout
 
