@@ -1,33 +1,32 @@
-name: micro_sam3
+name: microsam_llrd
 channels:
   - conda-forge
 dependencies:
   - python=3.12
-  - vigra
-  - pooch
-  - python-xxhash
-  - python-elf
+  - pytorch>=2.5
+  - torchvision
+  - torch_em>=0.8
+  - python-elf>=0.7.1
+  - segment-anything
+  - timm
+  - tqdm
   - xarray
-  - netcdf4
+  - zarr==2.18.4
+  - numcodecs==0.12.1
   - natsort
+  - pooch
+  - imagecodecs
+  - python-xxhash
+  - nifty>=1.2.3
+  - nibabel
+  - scipy
+  - scikit-image
+  - matplotlib
+  - imageio
+  - tifffile
+  - tensorboard
+  - netcdf4
   - pip
   - pip:
-      - torch
-      - torchvision
-      - torchaudio
-      - numpy
-      - scipy
-      - scikit-image
-      - matplotlib
-      - imageio
-      - tifffile
-      - tqdm
-      - nibabel
-      - tensorboard
-      - segment-anything
-      - kornia
-      - zarr==2.18.4
-      - numcodecs==0.12.1
-      - "napari[all]"
+      - git+https://github.com/ChaoningZhang/MobileSAM.git
       - git+https://github.com/computational-cell-analytics/micro-sam.git
-      - git+https://github.com/constantinpape/torch-em.git

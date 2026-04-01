@@ -136,24 +136,42 @@ python scripts/train_generalist.py --help
 ```
 
 
-## Dataset layout
 
-Expected root:
+## Expected Dataset Layout
 
-```text
-em_data/
-├── lucchi/
-├── urocell/
-├── kasthuri/
-└── vnc/
-```
+/path/to/em_data/
+  lucchi/
+  urocell/
+  kasthuri/
+  vnc/
 
+/path/to/microsam_eval_data/
+  lucchi/
+  urocell/
+  kasthuri/
+  vnc/
 ## Training
 
-Example:
+
 
 ```bash
 python scripts/train_generalist.py   --input_path /path/to/em_data   --save_root /path/to/microsam_runs   --iterations 20000   --lora_rank 8   --lora_start_block 6   --lr 1e-4   --layer_decay 0.95   --lr_other_factor 0.1   --lr_unetr_factor 0.1   --augment_to_max_size   --n_objects 10
+```
+
+Example:
+```bash
+(microsam_llrd) /content/Microsam_llrd# python scripts/train_generalist.py \
+  --input_path /content/drive/MyDrive/microsam_llrd_generalist_Aug20k/Aug_20k/em_data \
+  --save_root /content/microsam_runs_test \
+  --iterations 10 \
+  --lora_rank 8 \
+  --lora_start_block 6 \
+  --lr 1e-4 \
+  --layer_decay 0.95 \
+  --lr_other_factor 0.1 \
+  --lr_unetr_factor 0.1 \
+  --n_objects 10 \
+  --num_workers 0
 ```
 
 ## Merge LoRA checkpoint
@@ -182,5 +200,13 @@ python scripts/evaluate_predictions.py   --dataset lucchi   --eval_root /path/to
 
 ## Notes
 
-- Colab notebook is provided for easy execution
+- Colab notebook MicroSAM_Generalist_LoRa_LLRD_Augm.ipynb is provided for easy execution
+
+## Checkpoint Compatibility
+
+Older checkpoints created from notebook-based training code may contain serialized references to custom classes or modules outside this repository. In such cases, inference may fail when loading the checkpoint in the packaged repo environment.
+
+Recommended practice:
+- create merged/exported checkpoints from the repo environment
+- avoid using notebook-only custom module paths in saved checkpoints
   
