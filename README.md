@@ -1,18 +1,18 @@
-# microsam-llrd
+# Microsam-LORA+LLRD
 
 LoRA + layer-wise learning rate decay (LLRD) training utilities for MicroSAM on EM mitochondria datasets.
 
 
 ## What is included
 
-- dataset loading for Lucchi, UroCell, Kasthuri, and VNC
-- augmentation-based upsampling to reduce dataset imbalance
+- Dataset loading for Lucchi, UroCell, Kasthuri, and VNC
+- Augmentation-based upsampling to reduce dataset imbalance
 - LoRA-only LLRD optimizer grouping
-- generalist training entry point
+- Generalist training entry point
 - LoRA checkpoint merge utility
-- evaluation data export utility
-- instance segmentation inference utility
-- evaluation utility
+- Evaluation data export utility
+- Instance segmentation inference utility
+- Evaluation utility
 
 ## Repository layout
 
@@ -135,21 +135,35 @@ python -c "import microsam_llrd.inference; print('inference OK')"
 python scripts/train_generalist.py --help
 ```
 
+## Weights and Data
+
+- **Pretrained Model (LoRA + LLRD merged)**  
+  [Download Checkpoint for repo](https://drive.google.com/file/d/1XbfX4yiOwpgsHBuO3G-oUkSmyYleJzQA/view?usp=sharing)
+  [Download Checkpoint for notebook](https://drive.google.com/file/d/1z1_U7h5Yfco9xxSzYauLm6KgIliZBHYP/view?usp=sharing)
+
+- **Training Data (torch_em format)**  
+  [Download em_data](https://drive.google.com/drive/folders/1gRXC9uEVipiJD49SRMK6zvDlCgV_HK_w?usp=sharing)
+
+- **Evaluation Data**  
+  [Download microsam_eval_data](https://drive.google.com/drive/folders/1Vy0Ryt8xDylkVJu_rQ0KcqLCWYyVMrBV?usp=sharing)
 
 
 ## Expected Dataset Layout
 
+```bash
 /path/to/em_data/
-  lucchi/
-  urocell/
-  kasthuri/
-  vnc/
+├── lucchi/
+├── urocell/
+├── kasthuri/
+└── vnc/
 
 /path/to/microsam_eval_data/
-  lucchi/
-  urocell/
-  kasthuri/
-  vnc/
+├── lucchi/
+├── urocell/
+├── kasthuri/
+└── vnc/
+```
+
 ## Training
 
 
