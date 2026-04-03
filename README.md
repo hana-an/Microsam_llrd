@@ -47,7 +47,6 @@ microsam-llrd/
 
 ```bash
 git clone https://github.com/hana-an/Microsam_llrd.git
-cd Microsam_llrd
 ```
 
 ---
@@ -65,7 +64,13 @@ It is recommended to use micromamba / conda.
 wget -qO micromamba.tar.bz2 https://micro.mamba.pm/api/micromamba/linux-64/latest
 tar -xjf micromamba.tar.bz2
 export MAMBA_ROOT_PREFIX=/content/micromamba
+./bin/micromamba shell init -s bash -r $MAMBA_ROOT_PREFIX
+source ~/.bashrc
+```
+```bash
 eval "$(/content/bin/micromamba shell hook -s bash)"
+micromamba config append channels conda-forge
+micromamba config set channel_priority strict
 ```
 
 #### Create environment
@@ -73,17 +78,18 @@ eval "$(/content/bin/micromamba shell hook -s bash)"
 ```bash
 micromamba create -y -n microsam_llrd \
   "python=3.12" \
+  "pip" \
+  "python-elf>=0.7.1" \
   "pytorch>=2.5" \
   "torchvision" \
-  "torch_em>=0.8" \
-  "python-elf>=0.7.1" \
-  pip
+  "torch_em>=0.8"
 ```
 
 #### Activate environment
 
 ```bash
 micromamba activate microsam_llrd
+cd /content/Microsam_llrd
 ```
 
 ---
@@ -138,8 +144,8 @@ python scripts/train_generalist.py --help
 ## Weights and Data
 
 - **Pretrained Model (LoRA + LLRD merged)**  
-  [Download Checkpoint for repo](https://drive.google.com/file/d/1XbfX4yiOwpgsHBuO3G-oUkSmyYleJzQA/view?usp=sharing)
-  [Download Checkpoint for notebook](https://drive.google.com/file/d/1z1_U7h5Yfco9xxSzYauLm6KgIliZBHYP/view?usp=sharing)
+  [Download Checkpoint for github_repo](https://drive.google.com/file/d/1XbfX4yiOwpgsHBuO3G-oUkSmyYleJzQA/view?usp=sharing)
+  [Download Checkpoint for notebook execution](https://drive.google.com/file/d/1z1_U7h5Yfco9xxSzYauLm6KgIliZBHYP/view?usp=sharing)
 
 - **Training Data (torch_em format)**  
   [Download em_data](https://drive.google.com/drive/folders/1gRXC9uEVipiJD49SRMK6zvDlCgV_HK_w?usp=sharing)
@@ -233,12 +239,3 @@ python scripts/evaluate_predictions.py \
 ## Notes
 
 - Colab notebook MicroSAM_Generalist_LoRa_LLRD_Augm.ipynb is provided for easy execution
-
-## Checkpoint Compatibility
-
-Older checkpoints created from notebook-based training code may contain serialized references to custom classes or modules outside this repository. In such cases, inference may fail when loading the checkpoint in the packaged repo environment.
-
-Recommended practice:
-- create merged/exported checkpoints from the repo environment
-- avoid using notebook-only custom module paths in saved checkpoints
-  
