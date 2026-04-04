@@ -36,7 +36,8 @@ microsam-llrd/
 │   ├── merge_checkpoint.py
 │   ├── export_eval_data.py
 │   ├── run_instance_segmentation.py
-│   └── evaluate_predictions.py
+│   ├── evaluate_predictions.py
+│   └── test.py
 └── notebooks/
     └── 20Kaugmentation_exp1_LLRD_LORA_FFT_Training_luchii_urocell_kasturi_vnc.ipynb
 ```
@@ -235,7 +236,19 @@ python scripts/evaluate_predictions.py \
   --eval_root /content/drive/MyDrive/microsam_llrd_generalist_Aug20k/Aug_20k/microsam_eval_data \
   --experiment_dir /content/microsam_inference_test/lucchi
 ```
-
+## Evaluate predictions (2D/3D)
+Download the small test data for quick evaluation and visualization
+- **Evaluation Data**  
+  [Small Sample data](https://drive.google.com/drive/folders/16qbHDoMAkDS0OmyPuD1UafufZpr0CIRT)
+Example:
+```bash
+python scripts/test.py \
+  --image_path test_data/3d/lucchi_stack.tif \
+  --checkpoint checkpoints/repo_mergedbest.pt \
+  --output_path outputs/lucchi_stack_pred.tif \
+  --slice_index 5 \
+  --save_fig outputs/lucchi_slice5_vis.png
+```bash
 ## Notes
 
 - Colab notebook MicroSAM_Generalist_LoRa_LLRD_Augm.ipynb is provided for easy execution
