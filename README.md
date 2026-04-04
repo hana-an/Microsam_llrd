@@ -248,7 +248,7 @@ python scripts/test.py \
   --output_path outputs/lucchi_stack_pred.tif \
   --slice_index 5 \
   --save_fig outputs/lucchi_slice5_vis.png
-```bash
+```
 ## Notes
 
 - Colab notebook MicroSAM_Generalist_LoRa_LLRD_Augm.ipynb is provided for easy execution
